@@ -21,13 +21,13 @@ export const Brand = styled.Text`
   text-transform: uppercase;
 
   font-size: ${RFValue(10)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.text_detail};
 `;
 
 export const Name = styled.Text`
   font-size: ${RFValue(15)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.title};
 `;
 
@@ -46,13 +46,13 @@ export const Period = styled.Text`
   text-transform: uppercase;
 
   font-size: ${RFValue(10)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.text_detail};
 `;
 
 export const Price = styled.Text`
   font-size: ${RFValue(15)}px;
-  font-family: ${({ theme }) => theme.fonts.primary_500};
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.main};
 `;
 

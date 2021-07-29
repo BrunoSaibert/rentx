@@ -34,9 +34,11 @@ export function Home() {
         </S.HeaderContent>
       </S.Header>
 
-      <Car data={carData} />
-      <Car data={carData} />
-      <Car data={carData} />
+      <S.CarList
+        data={[1, 2, 3, 4, 5, 6, 7]}
+        keyExtractor={(item) => String(item)}
+        renderItem={({ item }) => <Car data={carData} />}
+      />
     </S.Container>
   );
 }
