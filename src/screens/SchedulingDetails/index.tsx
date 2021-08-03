@@ -1,4 +1,6 @@
 import React from "react";
+import { Feather } from "@expo/vector-icons";
+import { useTheme } from "styled-components";
 
 import { BackButton } from "../../components/BackButton";
 import { ImageSlider } from "../../components/ImageSlider";
@@ -14,7 +16,9 @@ import PeopleSVG from "../../assets/people.svg";
 
 import * as S from "./styles";
 
-export function CarDetails() {
+export function SchedulingDetails() {
+  const theme = useTheme();
+
   return (
     <S.Container>
       <S.Header>
@@ -51,15 +55,36 @@ export function CarDetails() {
           <Accessory name="2 pessoas" icon={PeopleSVG} />
         </S.Accessories>
 
-        <S.About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide
-          indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
-          para quem gosta de acelerar.
-        </S.About>
+        <S.RentalPeriod>
+          <S.CalendarIcon>
+            <Feather name="calendar" size={24} color={theme.colors.shape} />
+          </S.CalendarIcon>
+
+          <S.DateInfo>
+            <S.DateTitle>DE</S.DateTitle>
+            <S.DateValue>10/08/2021</S.DateValue>
+          </S.DateInfo>
+
+          <Feather name="chevron-right" size={10} color={theme.colors.text} />
+
+          <S.DateInfo>
+            <S.DateTitle>ATÉ</S.DateTitle>
+            <S.DateValue>18/08/2021</S.DateValue>
+          </S.DateInfo>
+        </S.RentalPeriod>
+
+        <S.RentalPrice>
+          <S.RentalPriceLabel>TOTAL</S.RentalPriceLabel>
+          <S.RentalPriceDetails>
+            <S.RentalPriceQuota>R$ 580 x3 diárias</S.RentalPriceQuota>
+
+            <S.RentalPriceTotal>R$ 2.900</S.RentalPriceTotal>
+          </S.RentalPriceDetails>
+        </S.RentalPrice>
       </S.Content>
 
       <S.Footer>
-        <Button title="Escolher período do aluguel" />
+        <Button title="Alugar agora" color={theme.colors.success} />
       </S.Footer>
     </S.Container>
   );
