@@ -11,7 +11,11 @@ const { Navigator, Screen } = createStackNavigator();
 
 export function StacRoutes() {
   return (
-    <Navigator headerMode="none">
+    <Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Screen name="Home" component={Home} />
       <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />

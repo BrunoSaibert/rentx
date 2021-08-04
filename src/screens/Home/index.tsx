@@ -1,27 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useNavigation } from "@react-navigation/native";
 
+import { api } from "../../services/api";
+
 import LogoSVG from "../../assets/logo.svg";
 
 import { Car } from "../../components/Car";
+import { Loading } from "../../components/Loading";
+
+import { CarDTO } from "../../dtos/CarDTO";
 
 import * as S from "./styles";
 
 export function Home() {
+  const [carData, setCarData] = useState<CarDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const navigation = useNavigation();
 
-  const carData = {
-    brand: "audi",
-    name: "RS 5 Coupé",
-    rent: {
-      period: "ao dia",
-      price: 120,
-    },
-    thumbnail:
-      "https://www.motortrend.com/uploads/sites/10/2018/05/2018-audi-rs5-4wd-coupe-angular-front.png",
-  };
+  useEffect(() => {
+    async function fetchCars() {
+      try {
+        const { data } = await api.get("/cars");
+
+        setCarData(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchCars();
+  }, []);
 
   function handleCarDetails() {
     navigation.navigate("CarDetails");
@@ -41,13 +53,17 @@ export function Home() {
         </S.HeaderContent>
       </S.Header>
 
-      <S.CarList
-        data={[1, 2, 3, 4, 5, 6, 7]}
-        keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => (
-          <Car data={carData} onPress={handleCarDetails} />
-        )}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <S.CarList
+          data={carData}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <Car data={item} onPress={handleCarDetails} />
+          )}
+        />
+      )}
     </S.Container>
   );
 }
