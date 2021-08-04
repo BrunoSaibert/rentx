@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 
@@ -18,11 +19,16 @@ import * as S from "./styles";
 
 export function SchedulingDetails() {
   const theme = useTheme();
+  const navigation = useNavigation();
+
+  function handleConfirmRental() {
+    navigation.navigate("SchedulingComplete");
+  }
 
   return (
     <S.Container>
       <S.Header>
-        <BackButton onPress={() => {}} />
+        <BackButton />
       </S.Header>
 
       <S.CarImages>
@@ -84,7 +90,11 @@ export function SchedulingDetails() {
       </S.Content>
 
       <S.Footer>
-        <Button title="Alugar agora" color={theme.colors.success} />
+        <Button
+          title="Alugar agora"
+          color={theme.colors.success}
+          onPress={handleConfirmRental}
+        />
       </S.Footer>
     </S.Container>
   );
