@@ -22,10 +22,8 @@ import ArrowSVG from "../../assets/arrow.svg";
 import * as S from "./styles";
 
 interface RentalPeriod {
-  start: number;
-  startFormated: string;
-  end: number;
-  endFormated: string;
+  startFormatted: string;
+  endFormatted: string;
 }
 
 interface Params {
@@ -49,7 +47,7 @@ export function Scheduling() {
   const { car } = route.params as Params;
 
   function handleConfirmRental() {
-    if (!rentalPeriod.start || !rentalPeriod.end) {
+    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
       Alert.alert("Selecione o intervalo para alugar");
     } else {
       navigation.navigate("SchedulingDetails", {
@@ -76,13 +74,11 @@ export function Scheduling() {
     const lastDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      start: start.timestamp,
-      end: end.timestamp,
-      startFormated: format(
+      startFormatted: format(
         getPlataformDate(new Date(firstDate)),
         "dd/MM/yyyy"
       ),
-      endFormated: format(getPlataformDate(new Date(lastDate)), "dd/MM/yyyy"),
+      endFormatted: format(getPlataformDate(new Date(lastDate)), "dd/MM/yyyy"),
     });
   }
 
@@ -105,15 +101,15 @@ export function Scheduling() {
         <S.RentalPeriod>
           <S.DateInfo>
             <S.DateTitle>DE</S.DateTitle>
-            <S.DateValue selected={!!rentalPeriod.startFormated}>
-              {rentalPeriod.startFormated}
+            <S.DateValue selected={!!rentalPeriod.startFormatted}>
+              {rentalPeriod.startFormatted}
             </S.DateValue>
           </S.DateInfo>
           <ArrowSVG />
           <S.DateInfo>
             <S.DateTitle>ATÉ</S.DateTitle>
-            <S.DateValue selected={!!rentalPeriod.endFormated}>
-              {rentalPeriod.endFormated}
+            <S.DateValue selected={!!rentalPeriod.endFormatted}>
+              {rentalPeriod.endFormatted}
             </S.DateValue>
           </S.DateInfo>
         </S.RentalPeriod>

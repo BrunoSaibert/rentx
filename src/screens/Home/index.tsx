@@ -49,7 +49,7 @@ export function Home() {
       <S.Header>
         <S.HeaderContent>
           <LogoSVG width={RFValue(108)} height={RFValue(12)} />
-          <S.TotalCars>Total de 12 carros</S.TotalCars>
+          <S.TotalCars>Total de {carData.length} carros</S.TotalCars>
         </S.HeaderContent>
       </S.Header>
 
