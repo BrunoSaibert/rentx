@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Alert } from "react-native";
+import { StatusBar, Alert } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 import { format } from "date-fns";
@@ -90,6 +90,11 @@ export function SchedulingDetails() {
 
   return (
     <S.Container>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <S.Header>
         <BackButton />
       </S.Header>

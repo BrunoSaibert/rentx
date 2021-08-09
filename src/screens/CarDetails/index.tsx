@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { StatusBar } from "react-native";
 
 import { BackButton } from "../../components/BackButton";
 import { ImageSlider } from "../../components/ImageSlider";
@@ -27,6 +28,11 @@ export function CarDetails() {
 
   return (
     <S.Container>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <S.Header>
         <BackButton />
       </S.Header>
