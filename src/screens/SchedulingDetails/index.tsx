@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useNavigation,
+  useRoute,
+  NavigationProp,
+} from "@react-navigation/native";
 import { StatusBar, Alert } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
@@ -36,7 +40,7 @@ export function SchedulingDetails() {
   const [loading, setLoading] = useState(false);
 
   const theme = useTheme();
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
   const route = useRoute();
   const { car, dates } = route.params as Params;
 

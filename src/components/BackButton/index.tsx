@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BorderlessButtonProps } from "react-native-gesture-handler";
 
@@ -13,7 +13,7 @@ interface Props extends BorderlessButtonProps {
 
 export function BackButton({ color, ...rest }: Props) {
   const theme = useTheme();
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
 
   return (
     <S.Container onPress={() => navigation.goBack()} {...rest}>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -15,7 +15,7 @@ import LogoSVG from "../../assets/logo.svg";
 import * as S from "./styles";
 
 export function Splash() {
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
 
   const splashAnimation = useSharedValue(0);
 

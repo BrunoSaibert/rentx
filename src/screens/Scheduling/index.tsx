@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useNavigation,
+  useRoute,
+  NavigationProp,
+} from "@react-navigation/native";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components";
 import { format } from "date-fns";
@@ -42,7 +46,7 @@ export function Scheduling() {
   );
 
   const theme = useTheme();
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
   const route = useRoute();
   const { car } = route.params as Params;
 

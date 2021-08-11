@@ -1,5 +1,9 @@
 import React from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useNavigation,
+  useRoute,
+  NavigationProp,
+} from "@react-navigation/native";
 import { StatusBar } from "react-native";
 import Animated, {
   useSharedValue,
@@ -25,7 +29,7 @@ interface Params {
 }
 
 export function CarDetails() {
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
   const route = useRoute();
   const { car } = route.params as Params;
 

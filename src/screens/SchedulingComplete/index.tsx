@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { useWindowDimensions, StatusBar } from "react-native";
 
 import { ConfirmButton } from "../../components/ConfirmButton";
@@ -11,7 +11,7 @@ import * as S from "./styles";
 
 export function SchedulingComplete() {
   const { width } = useWindowDimensions();
-  const navigation = useNavigation();
+  const navigation: NavigationProp<any> = useNavigation();
 
   function handleConfirmRental() {
     navigation.navigate("Home");
